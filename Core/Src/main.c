@@ -151,7 +151,7 @@ int main(void)
 			// for pwm
 			TIM9->CCR1=2150; // -> 3500~4000 dc motor pwm for NasaDrive
 			////////////////////////////////////////// 
-		/*
+		
 		// for go about conveyor
 		DcPIND_11ON(); // PIN 11 ON
 		DcPIND_12OFF(); // PIN 12 OFF
@@ -229,7 +229,7 @@ int main(void)
 		HAL_Delay(3000);
 		PCA9685_SetServoAngle(0, -70);
 		HAL_Delay(3000);
-		*/
+		
 	/////////////////////////////////////////
 		
     /* USER CODE END WHILE */
