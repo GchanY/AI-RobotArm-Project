@@ -50,17 +50,17 @@ UART_HandleTypeDef huart5;
 UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
-			#define DcMotor1Enable() HAL_GPIO_WritePin(GPIOE, GPIO_PIN_2,0)
-      #define DcMotor1Disable() HAL_GPIO_WritePin(GPIOE, GPIO_PIN_2,1)
-      #define DcMotor1DirCw() HAL_GPIO_WritePin(GPIOE, GPIO_PIN_3,0)
-      #define DcMotor1DirCcw() HAL_GPIO_WritePin(GPIOE, GPIO_PIN_3,1)
+#define DcMotor1Enable() HAL_GPIO_WritePin(GPIOE, GPIO_PIN_2,0)
+#define DcMotor1Disable() HAL_GPIO_WritePin(GPIOE, GPIO_PIN_2,1)
+#define DcMotor1DirCw() HAL_GPIO_WritePin(GPIOE, GPIO_PIN_3,0)
+#define DcMotor1DirCcw() HAL_GPIO_WritePin(GPIOE, GPIO_PIN_3,1)
 			
-			#define DcPIND_11ON() HAL_GPIO_WritePin(GPIOD, GPIO_PIN_11,1)
-			#define DcPIND_11OFF() HAL_GPIO_WritePin(GPIOD, GPIO_PIN_11,0)
-			#define DcPIND_12ON() HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12,1)
-			#define DcPIND_12OFF() HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12,0)
+#define DcPIND_11ON() HAL_GPIO_WritePin(GPIOD, GPIO_PIN_11,1)
+#define DcPIND_11OFF() HAL_GPIO_WritePin(GPIOD, GPIO_PIN_11,0)
+#define DcPIND_12ON() HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12,1)
+#define DcPIND_12OFF() HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12,0)
 
-			uint8_t ActiveServo; // add 0723
+uint8_t ActiveServo; // add 0723
 
 /* USER CODE END PV */
 
@@ -115,14 +115,14 @@ int main(void)
   MX_UART5_Init();
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
-	uint8_t data;
-	HAL_TIM_PWM_Start(&htim9, TIM_CHANNEL_1); 
-	PCA9685_Init(&hi2c2); //add 0723
+  uint8_t data;
+  HAL_TIM_PWM_Start(&htim9, TIM_CHANNEL_1); 
+  PCA9685_Init(&hi2c2); //add 0723
   PCA9685_SetServoAngle(0, 0); //add 0723
   PCA9685_SetServoAngle(1, 0); //add 0723
   PCA9685_SetServoAngle(2, 0); //add 0723
-	HAL_Delay(1000); // add 0723
-	HAL_GPIO_WritePin (GPIOE, GPIO_PIN_10, GPIO_PIN_RESET);   // IN1 HIGH
+  HAL_Delay(1000); // add 0723
+  HAL_GPIO_WritePin (GPIOE, GPIO_PIN_10, GPIO_PIN_RESET);   // IN1 HIGH
   HAL_GPIO_WritePin (GPIOE, GPIO_PIN_12, GPIO_PIN_RESET);
   HAL_GPIO_WritePin (GPIOE, GPIO_PIN_14, GPIO_PIN_RESET);
   HAL_GPIO_WritePin (GPIOE, GPIO_PIN_15, GPIO_PIN_RESET);
@@ -139,11 +139,11 @@ int main(void)
 		
 			// for go
 			DcMotor1DirCw(); // AIN -> 0 // dc sipza driver
-      DcMotor1Disable(); // Bin->1 // dc sipza driver
+      			DcMotor1Disable(); // Bin->1 // dc sipza driver
 		
 		
 			//HAL_Delay(5000); 
-		  // for stop
+		  	// for stop
 			//DcMotor1Disable(); // 1 
 			//DcMotor1DirCcw();  // 1 
 			//HAL_Delay(500);
@@ -190,45 +190,45 @@ int main(void)
 		}
 		
 		
-		  for (int i=0; i<128; i++)   // for 360 deg rotation
-   {
- HAL_GPIO_WritePin (GPIOE, GPIO_PIN_10, GPIO_PIN_SET);   // IN1 HIGH
- HAL_GPIO_WritePin (GPIOE, GPIO_PIN_12, GPIO_PIN_RESET);
- HAL_GPIO_WritePin (GPIOE, GPIO_PIN_14, GPIO_PIN_RESET);
- HAL_GPIO_WritePin (GPIOE, GPIO_PIN_15, GPIO_PIN_RESET);
+	for (int i=0; i<128; i++)   // for 360 deg rotation
+	{
+ 		HAL_GPIO_WritePin (GPIOE, GPIO_PIN_10, GPIO_PIN_SET);   // IN1 HIGH
+ 		HAL_GPIO_WritePin (GPIOE, GPIO_PIN_12, GPIO_PIN_RESET);
+ 		HAL_GPIO_WritePin (GPIOE, GPIO_PIN_14, GPIO_PIN_RESET);
+ 		HAL_GPIO_WritePin (GPIOE, GPIO_PIN_15, GPIO_PIN_RESET);
   
- HAL_Delay (2);
+ 		HAL_Delay (2);
   
- HAL_GPIO_WritePin (GPIOE, GPIO_PIN_10, GPIO_PIN_RESET);
- HAL_GPIO_WritePin (GPIOE, GPIO_PIN_12, GPIO_PIN_SET);   // IN2 HIGH
- HAL_GPIO_WritePin (GPIOE, GPIO_PIN_14, GPIO_PIN_RESET);
- HAL_GPIO_WritePin (GPIOE, GPIO_PIN_15, GPIO_PIN_RESET);
+ 		HAL_GPIO_WritePin (GPIOE, GPIO_PIN_10, GPIO_PIN_RESET);
+ 		HAL_GPIO_WritePin (GPIOE, GPIO_PIN_12, GPIO_PIN_SET);   // IN2 HIGH
+ 		HAL_GPIO_WritePin (GPIOE, GPIO_PIN_14, GPIO_PIN_RESET);
+ 		HAL_GPIO_WritePin (GPIOE, GPIO_PIN_15, GPIO_PIN_RESET);
  
- HAL_Delay (2);
+ 		HAL_Delay (2);
 
- HAL_GPIO_WritePin (GPIOE, GPIO_PIN_10, GPIO_PIN_RESET);
- HAL_GPIO_WritePin (GPIOE, GPIO_PIN_12, GPIO_PIN_RESET);
- HAL_GPIO_WritePin (GPIOE, GPIO_PIN_14, GPIO_PIN_SET);   // IN3 HIGH
- HAL_GPIO_WritePin (GPIOE, GPIO_PIN_15, GPIO_PIN_RESET);
+ 		HAL_GPIO_WritePin (GPIOE, GPIO_PIN_10, GPIO_PIN_RESET);
+ 		HAL_GPIO_WritePin (GPIOE, GPIO_PIN_12, GPIO_PIN_RESET);
+ 		HAL_GPIO_WritePin (GPIOE, GPIO_PIN_14, GPIO_PIN_SET);   // IN3 HIGH
+ 		HAL_GPIO_WritePin (GPIOE, GPIO_PIN_15, GPIO_PIN_RESET);
   
- HAL_Delay (2);
+ 		HAL_Delay (2);
   
- HAL_GPIO_WritePin (GPIOE, GPIO_PIN_10, GPIO_PIN_RESET);
- HAL_GPIO_WritePin (GPIOE, GPIO_PIN_12, GPIO_PIN_RESET);
- HAL_GPIO_WritePin (GPIOE, GPIO_PIN_14, GPIO_PIN_RESET);
- HAL_GPIO_WritePin (GPIOE, GPIO_PIN_15, GPIO_PIN_SET);    // IN4 HIGH
+ 		HAL_GPIO_WritePin (GPIOE, GPIO_PIN_10, GPIO_PIN_RESET);
+ 		HAL_GPIO_WritePin (GPIOE, GPIO_PIN_12, GPIO_PIN_RESET);
+ 		HAL_GPIO_WritePin (GPIOE, GPIO_PIN_14, GPIO_PIN_RESET);
+ 		HAL_GPIO_WritePin (GPIOE, GPIO_PIN_15, GPIO_PIN_SET);    // IN4 HIGH
   
- HAL_Delay (2); 
-  }
+ 		HAL_Delay (2); 
+		}
 		
-			PCA9685_SetServoAngle(2, 60);
-			HAL_Delay(3000);
-			PCA9685_SetServoAngle(2, 90);
-			HAL_Delay(3000);
-			PCA9685_SetServoAngle(0, 50);
-			HAL_Delay(3000);
-			PCA9685_SetServoAngle(0, -70);
-			HAL_Delay(3000);
+		PCA9685_SetServoAngle(2, 60);
+		HAL_Delay(3000);
+		PCA9685_SetServoAngle(2, 90);
+		HAL_Delay(3000);
+		PCA9685_SetServoAngle(0, 50);
+		HAL_Delay(3000);
+		PCA9685_SetServoAngle(0, -70);
+		HAL_Delay(3000);
 		*/
 	/////////////////////////////////////////
 		
