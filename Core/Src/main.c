@@ -170,17 +170,17 @@ int main(void)
 		  
 			
 		  PCA9685_SetServoAngle(0, 30);
-			HAL_Delay(3000);
-			PCA9685_SetServoAngle(0, 50);
-			HAL_Delay(3000);
-			PCA9685_SetServoAngle(0, -70);
-			HAL_Delay(3000);
+		  HAL_Delay(3000);
+		  PCA9685_SetServoAngle(0, 50);
+		  HAL_Delay(3000);
+		  PCA9685_SetServoAngle(0, -70);
+		  HAL_Delay(3000);
 		}
 		
 		else if( data =='2')
 		{
-			
-	  }
+			///////
+	  	}
 		else if( data =='3' )
 		{
 			PCA9685_SetServoAngle(2, 60);
